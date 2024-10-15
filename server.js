@@ -1,3 +1,5 @@
+//Server es la aplicacion principal, es la que se ejecuta para levantar nuestra api
+
 //El orden de las importaciones afecta la ejecucion del codigo
 import express from "express"; // importamos express
 import "dotenv/config.js" // Nos poermite acceder a las variables de entorno
@@ -9,12 +11,12 @@ const PORT = process.env.PORT || 8080 //variable PORT donde se almacenara la rut
 
 const ready = ()=> console.log("server ready in port: " +PORT); //funcion parea retornar el estado a la terminal
 
-// endpoint basico
-server.get('/',(req,res) => {
-    res.send('Hola mundo en express')
-})
+// endpoint basico de prueba
+// server.get('/',(req,res) => {
+//     res.send('Hola mundo en express')
+// })
 
-server.listen(PORT,ready) //utilizamos la propiedad listen para escuchar el puerto
+server.listen(PORT,ready) //utilizamos la propiedad listen para escuchar el puerto y levantar el servidor
 
 
 console.log(process.env.PORT); //para ver las variables de entorno

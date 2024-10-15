@@ -1,7 +1,7 @@
 import "dotenv/config.js" //importamos para que use variables de entorno para que reconozca el archivo .env donde esta guardada la URI
 // al ser una dependencia dotenv no hay que hacer la ruta, se localiza automaticamente
 import "../../config/database.js" //Para que el archivo stores se pueda conectar con la base de datos
-import Store from "../Store.js" //Importamos el modelo
+import Store from "../Store.js" //Importamos y nos conectamos al model
 
 
 let stores = [

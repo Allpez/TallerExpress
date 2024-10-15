@@ -1,4 +1,4 @@
-// carpeta con la conexion a la base de datos
+// configuracion carpeta con la conexion a la base de datos
 import mongoose from "mongoose";
 
 let url = process.env.URI_MONGO // La URL de la conexion a la base de datos MondoDB

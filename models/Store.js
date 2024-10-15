@@ -11,6 +11,6 @@
    timestamps:true
  })
 
- let Store = model(collection,schema) //Modelo a que coleccion pertenece y datos, cual es el esquema de cada modelo
+ let Store = model(collection,schema) //creacion del modelo a que coleccion pertenece y datos, cual es el esquema de cada modelo
 
  export default Store
