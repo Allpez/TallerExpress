@@ -18,29 +18,33 @@ password = tu link de mongo y contraseña de tu base de datos
 
 Dinamica del taller.
 
-Crear un servidor de Express, descargar y configurar todo lo necesario para poder cumplir con los siguientes puntos:
+1.- Crear un servidor de Express, descargar y configurar todo lo necesario para poder cumplir con los siguientes puntos:
 
-1.- Crear un modelo de Tienda con mínimo las siguientes propiedades:
+- Crear un modelo de Tienda con mínimo las siguientes propiedades:
 Nombre: String
 Dirección: String
 Teléfono: Number
 
-2.- Crear un modelo de Producto con mínimo las siguientes propiedades:
+- Crear un modelo de Producto con mínimo las siguientes propiedades:
 Nombre: String
 Marca: String
 Tipo: String
 Precio: String
 
-3.- Crear un modelo de Empleado con mínimo las siguientes propiedades:
+- Crear un modelo de Empleado con mínimo las siguientes propiedades:
 Nombre: String
 Cargo: String
 Salario: Number
 
-Crear Scripts de data para cada uno de los modelos, Tienda mínimo 5, productos mínimo 100, Empleados mínimo 15
-Crear endpoints para cada modelos usando los enrutadores y controladores, minimos 3 enpoint por cada modelo
+2.- Crear Scripts de data para cada uno de los modelos, Tienda mínimo 5, productos mínimo 100, Empleados mínimo 15
+
+3.- Crear endpoints para cada modelos usando los enrutadores y controladores, minimos 3 enpoint por cada modelo
   Ejemplo: 
       Tienda - Ver todas las tiendas
       Tienda - Ver una tienda según su dirección
       Tienda - Ver una tienda según su nombre
 
 Nota: Configurar correctamente los archivos y carpetas, seguir el orden visto en clase y poner nombres de variables y archivos coherentes, lo mismo en la ruta de consumo del endpoint
+
+4.- Crear endpoints tipo post para los tres modelos
+      Enpoint crear 1 y endpoint crear varios

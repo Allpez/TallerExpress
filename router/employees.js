@@ -1,21 +1,11 @@
 import { response,Router } from "express";
-import Employee from "../models/Employee.js"
+import { allEmployees,employeeByName,employeeFullTime } from "../controllers/employees/read.js";
 
 const router = Router() //Para usar el router lo guardamos en una constante 
 
-router.get('/all', //Creamos un enrutador y le dimos la parte final de la ruta
-    async (req,res) => {
-        try {
-            let all = await Employee.find()
-            return res.status(200).json({
-                response: all
-            })
-        } catch (error) {
-            return res.status(500).json({
-                response: error
-            })
-        } 
-    }
-)
+router.get('/all',allEmployees) //Creamos un enrutador y le dimos la parte final de la ruta
+router.get('/name/:name',employeeByName) //Creamos otro enrutador para filtrar por direccion
+router.get('/isFullTime/:fullTime',employeeFullTime) //Creamos otro enrutador para filtrar por nombre
 
+    
 export default router

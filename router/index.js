@@ -1,3 +1,5 @@
+//Enrutador principal
+
 import { Router } from "express";
 import storesRouter from "./stores.js"
 import productsRouter from "./products.js"
