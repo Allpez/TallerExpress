@@ -48,3 +48,5 @@ Nota: Configurar correctamente los archivos y carpetas, seguir el orden visto en
 
 4.- Crear endpoints tipo post para los tres modelos
       Enpoint crear 1 y endpoint crear varios
+
+5.- Crear middlewares de control de errores y aplicarlo a todo el servidor

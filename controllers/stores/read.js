@@ -1,4 +1,4 @@
-//Controlador, parte final del endpoint que se encarga de hacer la funcion de la peticion
+//Controladores para leer, parte final del endpoint que se encarga de hacer la funcion de la peticion. 
 import Store from "../../models/Store.js"
 
 let allStores = async (req,res) => {
@@ -42,4 +42,19 @@ let storesByAddress = async (req, res) => {
     }
 }
 
-export {allStores,storesByName,storesByAddress}
+let StoresById = async (req,res) => {
+    try {
+        let idQuery = req.params.id
+        let all = await Store.findById(idQuery)
+        return res.status(200).json({
+            response: all
+        })
+    } catch (error) {
+        return res.status(500).json({
+            response: error
+        })
+    } 
+}
+
+
+export {allStores,storesByName,storesByAddress,StoresById}

@@ -41,4 +41,18 @@ let employeeFullTime = async (req,res) => {
     } 
 }
 
-export { allEmployees,employeeByName,employeeFullTime }
+let employeeDepartment = async (req,res) => {
+    try {
+        let departmentQuery = req.params.department
+        let all = await Employee.find({department: departmentQuery})
+        return res.status(200).json({
+            response: all
+        })
+    } catch (error) {
+        return res.status(500).json({
+            response: error
+        })
+    } 
+}
+
+export { allEmployees,employeeByName,employeeFullTime,employeeDepartment }
