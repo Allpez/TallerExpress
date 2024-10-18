@@ -1,6 +1,6 @@
 import Product from "../../models/Product.js" 
 
-let create = async (req,res) =>{
+let create = async (req,res,next) =>{
     try {
         let product = req.body
         let newProduct = await Product.create(product)
@@ -14,7 +14,7 @@ let create = async (req,res) =>{
     }
 }
 
-let insertMany = async (req,res) =>{
+let insertMany = async (req,res,next) =>{
     try {
         let products = req.body
         let newProducts = await Product.insertMany(products)

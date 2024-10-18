@@ -7,52 +7,72 @@ let allEmployees = async (req,res) => {
             response: all
         })
     } catch (error) {
-        return res.status(500).json({
-            response: error
-        })
-    } 
+        next(error)
+    }
 }
 
-let employeeByName = async (req,res) => {
+let employeeByName = async (req,res,next) => {
     try {
         let nameQuery = req.params.name
-        let all = await Employee.find({name: nameQuery})
+        if (!nameQuery) {
+            const error = new Error("Parameter 'name' is missing");
+            error.status = 400;
+            return next(error);
+        }
+        let employees = await Employee.find({ name: nameQuery })
+        if (employees.length === 0) {
+            const error = new Error(`No employee found with name: ${nameQuery}`);
+            error.status = 404;
+            return next(error);
+        }
         return res.status(200).json({
-            response: all
+            response: employees
         })
     } catch (error) {
-        return res.status(500).json({
-            response: error
-        })
-    } 
+        next(error)
+    }
 }
 
-let employeeFullTime = async (req,res) => {
+let employeeFullTime = async (req, res, next) => {
     try {
-        let fullTimeQuery = req.params.fullTime
-        let all = await Employee.find({isFullTime: fullTimeQuery})
-        return res.status(200).json({
-            response: all
-        })
-    } catch (error) {
-        return res.status(500).json({
-            response: error
-        })
-    } 
-}
+        let fullTimeQuery = req.params.fullTime;
+        if (fullTimeQuery !== "true" && fullTimeQuery !== "false") {
+            const error = new Error(`The value '${fullTimeQuery}' must be either 'true' or 'false'`);
+            error.status = 400;
+            return next(error);
+        }
+ 
+        let isFullTime = fullTimeQuery === "true";
 
-let employeeDepartment = async (req,res) => {
+        let employees = await Employee.find({ isFullTime: isFullTime });
+        return res.status(200).json({
+            response: employees
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+let employeeDepartment = async (req,res,next) => {
     try {
         let departmentQuery = req.params.department
-        let all = await Employee.find({department: departmentQuery})
+        if (!departmentQuery) {
+            const error = new Error("Parameter 'department' is missing");
+            error.status = 400;
+            return next(error);
+        }
+        let employees = await Employee.find({ department: departmentQuery })
+        if (employees.length === 0) {
+            const error = new Error(`No employee found with name: ${departmentQuery}`);
+            error.status = 404;
+            return next(error);
+        }
         return res.status(200).json({
-            response: all
+            response: employees
         })
     } catch (error) {
-        return res.status(500).json({
-            response: error
-        })
-    } 
+        next(error)
+    }
 }
 
-export { allEmployees,employeeByName,employeeFullTime,employeeDepartment }
+export { allEmployees, employeeByName, employeeFullTime, employeeDepartment }

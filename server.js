@@ -8,6 +8,11 @@ import cors from "cors"
 import morgan from "morgan";
 import indexRouter from "./router/index.js"
 
+//Importamops los middlewares
+import not_found_handler from "./middlewares/not_found_handler.js"
+import error_handler from "./middlewares/error_handler.js"
+import bad_request from "./middlewares/bad_request.js"
+
 
 const server = express() //creamos la variable server donde se ejecutara express
 
@@ -26,13 +31,16 @@ server.get('/',(req,res) => {
 // })
 
 //middleware importantes para express, se coloican sobre el listener antes de levantar el servidor para que sepa que middleware se le van a aplicar en base
-server.use(express.json()) //las peticiones que va a recibir y responder seeran en formato JSON
-server.use(express.urlencoded({ extended: true })) //Nos permite recibir parametros y querys complejas
-server.use(cors()) //filtro para controlar las peticiones externas
-server.use(morgan('dev'))// libreria que nos va a ayudar a controlar y ver las peticiones que lleguen al servidor
+server.use(express.json()) //las peticiones que va a recibir y responder seran en formato JSON
+server.use(express.urlencoded({ extended: true })) //Nos permite recibir parametros y querys complejos
+server.use(cors()) //filtro para controlar las peticiones externas / origenes cruzados
+server.use(morgan('dev')) // libreria que nos va a ayudar a controlar y ver las peticiones HTTP que lleguen al servidor
 
-//Configuracion del enrutador
+//Configuracion del router
 server.use('/api',indexRouter)
+server.use(bad_request)
+server.use(error_handler)
+server.use(not_found_handler)
 
 server.listen(PORT,ready) //utilizamos la propiedad listen para escuchar el puerto y levantar el servidor
 
