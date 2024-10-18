@@ -4,8 +4,8 @@ let create = async (req, res, next) => {
     try {
         let employee = req.body;
 
-        const Properties = ['name', 'position', 'salary', 'startDate'];
-        const missingFields = Properties.filter(field => !employee[field]);
+        const Properties = ['name', 'position', 'salary', 'isFullTime','department'];
+        const missingFields = Properties.filter(field => employee[field] === undefined || employee[field] === null);
 
         if (missingFields.length > 0) {
             return res.status(400).json({ 
@@ -30,11 +30,11 @@ let insertMany = async (req, res, next) => {
             return res.status(400).json({ error: "You must provide an array of employees." });
         }
 
-        const requiredFields = ['name', 'position', 'salary', 'startDate'];
+        const requiredFields = ['name', 'position', 'salary', 'isFullTime','department'];
         const invalidEmployees = employees.filter(employee => 
-            requiredFields.some(field => !employee[field])
+            requiredFields.some(field => employee[field] === undefined || employee[field] === null)
         );
-
+        
         if (invalidEmployees.length > 0) {
             return res.status(400).json({
                 error: `Some employees are missing required fields.`,

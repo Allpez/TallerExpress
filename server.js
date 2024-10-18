@@ -25,11 +25,6 @@ server.get('/',(req,res) => {
     res.send('Hola mundo en express')
 })
 
-//Ruta no encontrada
-// server.get('/*',(request, response) =>{
-//     response.send('Page not found')
-// })
-
 //middleware importantes para express, se coloican sobre el listener antes de levantar el servidor para que sepa que middleware se le van a aplicar en base
 server.use(express.json()) //las peticiones que va a recibir y responder seran en formato JSON
 server.use(express.urlencoded({ extended: true })) //Nos permite recibir parametros y querys complejos

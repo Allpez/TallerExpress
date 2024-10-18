@@ -4,8 +4,8 @@ let create = async (req, res, next) => {
     try {
         let product = req.body;
         
-        const Properties = ['name', 'price', 'description', 'stock', 'category'];
-        const missingFields = Properties.filter(field => !product[field]);
+        const Properties = ['name', 'brand', 'type', 'price', 'available'];
+        const missingFields = Properties.filter(field => product[field] === undefined || product[field] === null);
 
         if (missingFields.length > 0) {
             return res.status(400).json({ 
@@ -30,11 +30,11 @@ let insertMany = async (req, res, next) => {
             return res.status(400).json({ error: "You must provide an array of products." });
         }
 
-        const requiredFields = ['name', 'price', 'description', 'stock', 'category'];
+        const requiredFields = ['name', 'brand', 'type', 'price', 'available'];
         const invalidProducts = products.filter(product => 
-            requiredFields.some(field => !product[field])
+            requiredFields.some(field => product[field] === undefined || product[field] === null)
         );
-
+        
         if (invalidProducts.length > 0) {
             return res.status(400).json({
                 error: `Some products are missing required fields.`,
