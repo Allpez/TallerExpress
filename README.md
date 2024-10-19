@@ -7,7 +7,7 @@ npm install --save-dev nodemon
 npm install dotenv
 npm install mongoose
 npm i corps
-npm i porgan
+npm i morgan
 
 
 crear archivo .env y configurar

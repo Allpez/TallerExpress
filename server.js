@@ -34,12 +34,10 @@ server.use(morgan('dev')) // libreria que nos va a ayudar a controlar y ver las 
 //Configuracion del router
 server.use('/api',indexRouter)
 server.use(bad_request)
-server.use(error_handler)
 server.use(not_found_handler)
+server.use(error_handler)
 
 server.listen(PORT,ready) //utilizamos la propiedad listen para escuchar el puerto y levantar el servidor
 
 
 console.log(process.env.PORT); //para ver las variables de entorno
- 
-
